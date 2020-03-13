@@ -17,7 +17,6 @@ async function init () {
         }
     });
 
-    // and load the index.html of the app.
     await win.loadFile('index.html');
 
     win.webContents.openDevTools();
@@ -55,7 +54,8 @@ function handleDirSelect(dirPath){
                     //     fs.unlinkSync(dstFile);
                     // }
 
-                    const convert = `-I dummy -vvv --sout=#transcode{acodec=mp3,ab=320,channels=2,samplerate=48000}:std{access=file,mux=dummy,dst="${dstFile}"} vlc://quit"`;
+                    // const convert = `-I dummy -vvv --sout=#transcode{acodec=mp3,ab=320,channels=2,samplerate=48000}:std{access=file,mux=dummy,dst="${dstFile}"} vlc://quit"`;
+                    const convert = `-I dummy -vvv --sout=#transcode{acodec=mp3,ab=256,channels=2,samplerate=44100}:std{access=file,mux=dummy,dst="${dstFile}"} vlc://quit"`;
                     const command = `"${vlcExePath}" "${track}" ${convert}`;
 
                     console.log(command);
